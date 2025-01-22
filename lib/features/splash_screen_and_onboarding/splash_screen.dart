@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycle_ai/core/extensions/context-extensions.dart';
+import 'package:recycle_ai/core/router/app_routes_names.dart';
 import 'package:recycle_ai/utils/assets/assets.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,9 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 3900), () {
-      // Navigator.of(context).pushNamedAndRemoveUntil(AppRoutesNames.dateConversionView, (_) => false);
-      // Navigator.of(context).pushNamedAndRemoveUntil(AppRoutesNames.mainHomepage, (_) => false);
+    Future.delayed(const Duration(milliseconds: 5000), () {
+      Navigator.of(context).pushNamedAndRemoveUntil(AppRoutesNames.onBoardingScreen, (_) => false);
     });
   }
 

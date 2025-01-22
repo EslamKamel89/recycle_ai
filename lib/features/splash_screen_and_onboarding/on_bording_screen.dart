@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycle_ai/core/extensions/context-extensions.dart';
+import 'package:recycle_ai/core/router/app_routes_names.dart';
+import 'package:recycle_ai/core/themes/themedata.dart';
 import 'package:recycle_ai/core/widgets/default_screen_padding.dart';
 import 'package:recycle_ai/core/widgets/sizer.dart';
 import 'package:recycle_ai/utils/assets/assets.dart';
@@ -20,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     if (_currentPage < _onBoardingData.length - 1) {
       _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeInOut);
     } else {
-      // TODO: NAVIGATE TO THE LOGIN SCREEN
+      Navigator.of(context).pushNamedAndRemoveUntil(AppRoutesNames.signInScreen, (_) => false);
     }
   }
 
@@ -88,34 +90,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<Map<String, String>> _onBoardingData = [
     {
       "image": AssetsData.onBoarding_1,
-      "title": "Welcome to LocumFinder",
-      "description": "Discover the best locum opportunities tailored to your needs.",
+      "title": "Grab Your Object",
+      "description": "look for the recycling code .",
     },
     {
       "image": AssetsData.onBoarding_2,
-      "title": "Easy Job Search",
-      "description": "Quickly find locum positions with our advanced search filters.",
+      "title": "Point The Camera At The Code ",
+      "description": "Make sure its visible!",
     },
     {
       "image": AssetsData.onBoarding_3,
-      "title": "A Real-Time Updates",
-      "description": "Stay updated with instant job alerts and important updates.",
+      "title": "Snap The Photo",
+      "description": "Just take a picture of the plastic object, and we'll handle the rest with our smart AI sorter",
     },
-    {
-      "image": AssetsData.onBoarding_4,
-      "title": "Seamless Applications",
-      "description": "Apply to locum jobs with just a few taps, no hassle.",
-    },
-    {
-      "image": AssetsData.onBoarding_5,
-      "title": "Manage Your Schedule",
-      "description": "Effortlessly keep track of your shifts and appointments.",
-    },
-    {
-      "image": AssetsData.onBoarding_6,
-      "title": "Join Our Community",
-      "description": "Connect with top healthcare facilities and fellow professionals.",
-    },
+
+    // {
+    //   "image": AssetsData.onBoarding_6,
+    //   "title": "Join Our Community",
+    //   "description": "Connect with top healthcare facilities and fellow professionals.",
+    // },
   ];
 }
 
@@ -127,22 +120,24 @@ class OnBoardingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
           Material(
-            elevation: 5,
-            borderRadius: BorderRadius.circular(300.h),
+            elevation: 2,
+            borderRadius: BorderRadius.circular(20.w),
             child: Container(
               height: 300.h,
               clipBehavior: Clip.hardEdge,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
+              decoration: BoxDecoration(
+                color: lightClr.primaryColor.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(20.w),
+                // shape: BoxShape.circle,
               ),
               // padding: EdgeInsets.symmetric(vertical: 5.h),
               child: Image.asset(
                 image,
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
               ),
             ),
           ),
